@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const upcomingReducer = createSlice({
+export const upcomingMovieReducer = createSlice({
   name: 'upcoming',
   initialState: {
     upcomingMovies: null
@@ -12,6 +12,6 @@ export const upcomingReducer = createSlice({
   }
 })
 
-export const { setUpcomingMovies } = upcomingReducer.actions
+export const { setUpcomingMovies } = upcomingMovieReducer.actions
 
-export default upcomingReducer.reducer
+export default upcomingMovieReducer.reducer

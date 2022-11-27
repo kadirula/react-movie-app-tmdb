@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import upcomingReducer from './reducers/upcomingReducer'
+import topRatedMovieReducer from './reducers/topRatedMovieReducer'
+import upcomingMovieReducer from './reducers/upcomingMovieReducer'
 
 export default configureStore({
     reducer: {
-        upcoming: upcomingReducer
+        upcoming: upcomingMovieReducer,
+        top_rated: topRatedMovieReducer
     }
 })

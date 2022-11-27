@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import MovieDefaultImage from '../assets/movieDefaultImage.jpg';
-import ScrollArrowImage from '../assets/scroll-arrow.png';
+import MovieDefaultImage from '../../assets/movieDefaultImage.jpg';
+import ScrollArrowImage from '../../assets/scroll-arrow.png';
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchFromAPI } from '../api/fetch';
-import { setUpcomingMovies } from '../redux/reducers/upcomingReducer';
+import { fetchFromAPI } from '../../api/fetch';
+import { setUpcomingMovies } from '../../redux/reducers/upcomingMovieReducer';
 import Container from 'react-bootstrap/Container';
 
 // Swiper
@@ -37,10 +37,7 @@ const Slider = () => {
                 dispatch(setUpcomingMovies(filterMovies))
             }
         })
-
-
     }, [])
-
 
     return (
         <div className="slider">
@@ -48,10 +45,6 @@ const Slider = () => {
                 className='slider__wrapper'
                 modules={[Navigation, EffectFade, Autoplay]}
                 slidesPerView={1}
-                pagination={{
-                    clickable: true,
-                    el: '.slider__pagination'
-                }}
                 effect='fade'
                 navigation={true}
                 loop={true}
