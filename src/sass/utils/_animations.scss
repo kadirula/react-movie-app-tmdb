@@ -1,0 +1,25 @@
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    animation: #{$str};
+}
+
+@include keyframes(horizontalMove) {
+    0% {
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(0.5rem);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}

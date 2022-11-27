@@ -1,0 +1,14 @@
+.button{
+    background: linear-gradient(90deg, #40905d 0%, #4ade80 50%, #40905d 100%);
+    padding: 1rem 3rem;
+    border-radius: .3rem;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+    &:hover{
+        color: #fff;
+        opacity: .85;
+    }
+}
