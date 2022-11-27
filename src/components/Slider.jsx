@@ -7,11 +7,12 @@ import { setUpcomingMovies } from '../redux/reducers/upcomingReducer';
 import Container from 'react-bootstrap/Container';
 
 // Swiper
-import { Navigation, EffectFade } from 'swiper';
+import { Navigation, EffectFade, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import 'swiper/css/autoplay';
 
 
 const Slider = () => {
@@ -21,6 +22,7 @@ const Slider = () => {
 
     useEffect(() => {
 
+        // YAKLAŞAN FİLMLER
         fetchFromAPI(`movie/upcoming`).then(res => {
             if (res.status === 200) {
 
@@ -33,7 +35,6 @@ const Slider = () => {
                     .sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
 
                 dispatch(setUpcomingMovies(filterMovies))
-                console.log(filterMovies);
             }
         })
 
@@ -45,14 +46,19 @@ const Slider = () => {
         <div className="slider">
             <Swiper
                 className='slider__wrapper'
-                modules={[Navigation, EffectFade]}
+                modules={[Navigation, EffectFade, Autoplay]}
                 slidesPerView={1}
                 pagination={{
                     clickable: true,
                     el: '.slider__pagination'
                 }}
                 effect='fade'
-                navigation>
+                navigation={true}
+                loop={true}
+                autoplay={{
+                    delay: 4000
+                }}
+            >
                 {
                     upcomingMovies?.map((movie, index) => (
                         <SwiperSlide key={index}>
