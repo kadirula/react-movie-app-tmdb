@@ -1,14 +1,18 @@
-.button{
-    background: linear-gradient(90deg, #40905d 0%, #4ade80 50%, #40905d 100%);
-    padding: 1rem 3rem;
-    border-radius: .3rem;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: .3rem;
+.button {
+    background-image: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%);
+    padding: 1.5rem 4.5rem;
+    display: block;
+    text-align: center;
     text-transform: uppercase;
-    transition: all .4s ease-in-out;
-    &:hover{
+    background-size: 200% auto;
+    color: white;
+    border-radius: 0.4rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    transition: 0.5s;
+    &:hover {
+        background-position: right center; /* change the direction of the change here */
         color: #fff;
-        opacity: .85;
+        text-decoration: none;
     }
 }

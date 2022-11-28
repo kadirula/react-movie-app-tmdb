@@ -1,0 +1,12 @@
+.tag{
+    @include flex(center, flex-start);
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 1rem 0;
+    &__item{
+        padding: 0.5rem 1rem;
+        color: $color-text;
+        border: 0.1rem solid $color-border;
+        border-radius: .3rem;
+    }
+}

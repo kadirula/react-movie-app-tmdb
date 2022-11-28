@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchFromAPI } from '../../api/fetch';
 import { setUpcomingMovies } from '../../redux/reducers/upcomingMovieReducer';
 import Container from 'react-bootstrap/Container';
+import Genres from '../Genres';
 
 // Swiper
 import { Navigation, EffectFade, Autoplay } from 'swiper';
@@ -18,6 +19,7 @@ import 'swiper/css/autoplay';
 const Slider = () => {
 
     const { upcomingMovies } = useSelector(state => state.upcoming)
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -37,6 +39,7 @@ const Slider = () => {
                 dispatch(setUpcomingMovies(filterMovies))
             }
         })
+
     }, [])
 
     return (
@@ -57,14 +60,18 @@ const Slider = () => {
                         <SwiperSlide key={index}>
                             <div className="slider__item">
                                 <div className="slider__image">
-                                    {/* <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path ? movie.backdrop_path : ''}`} alt="" /> */}
-                                    <img src={MovieDefaultImage} alt="" />
+                                    <img src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path ? movie.backdrop_path : ''}`} alt={movie.title} />
                                 </div>
                                 <Container>
                                     <div className="slider__info">
                                         <div className='slider__date'>Release Date: <span>{movie.release_date}</span></div>
                                         <h4 className="slider__title">{movie.title}</h4>
                                         <p className="slider__desc">{movie.overview}</p>
+                                        {
+                                            movie.genre_ids.length > 0 &&
+                                            <Genres movieGenres={movie.genre_ids} />
+                                        }
+
                                         <div className="slider__info-bottom">
                                             {
                                                 movie.vote_average > 0 && <span className='slider__vote'>{movie.vote_average}</span>
