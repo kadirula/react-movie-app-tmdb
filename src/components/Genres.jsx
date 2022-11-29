@@ -7,9 +7,9 @@ const Genre = ({ movieGenres }) => {
   return (
     <div className="tag">
       {
-        movieGenres.map(movieGenre => {
+        movieGenres.map((movieGenre, index) => {
           return (
-            <div className="tag__item">
+            <div className="tag__item" key={index}>
               #{genres?.filter(genre => genre.id === movieGenre)[0].name}
             </div>
           )
