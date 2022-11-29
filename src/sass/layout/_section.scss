@@ -2,43 +2,4 @@
     padding: 5rem 0;
 }
 
-.section-top-rated {
-    .top-rated-slider {
-        margin-top: 3rem;
-        padding: 2rem 0;
-        .swiper-wrapper {
-            align-items: center;
-        }
-        .swiper-slide .movie-card {
-            opacity: 0.5;
-        }
-        .swiper-slide-next .movie-card {
-            height: 60rem;
-            opacity: 1;
-        }
-        .swiper-button-prev {
-            right: 6rem;
-            left: auto;
-        }
-        .swiper-button-prev,
-        .swiper-button-next {
-            top: 3rem;
-            border-radius: 50%;
-            border: 0.2rem solid $color-theme;
-            width: 4rem;
-            height: 4rem;
-            transition: all .4s;
-            &:hover{
-                background: $color-theme;
-                border-color: $color-theme;
-                &::after{
-                    color: $color-black;
-                }
-            }
-            &::after {
-                font-size: 1.3rem;
-                color: $color-black;
-            }
-        }
-    }
-}
+

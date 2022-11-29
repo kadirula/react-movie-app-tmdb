@@ -86,9 +86,9 @@ const Slider = () => {
                     ))
                 }
             </Swiper>
-            <div className="slider__arrow">
+            <a href='#top-rated' className="slider__arrow">
                 <img src={ScrollArrowImage} alt="Scroll Arrow" />
-            </div>
+            </a>
         </div>
     )
 }

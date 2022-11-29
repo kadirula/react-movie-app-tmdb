@@ -1,24 +1,19 @@
-
-import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../MovieCard';
 
 
 // Swiper
-import { Navigation, EffectFade, Autoplay } from 'swiper';
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
 
-const TopRatedSlider = () => {
-
-    const { topRatedMovies } = useSelector(state => state.top_rated);
-    
+const MovieSlider = ({ movies }) => {
 
     return (
         <Swiper
-            className='top-rated-slider'
+            className='movie-slider'
             modules={[Navigation]}
             slidesPerView={3}
             spaceBetween={10}
@@ -29,7 +24,7 @@ const TopRatedSlider = () => {
             }}
         >
             {
-                topRatedMovies?.map((movie, index) => (
+                movies?.map((movie, index) => (
                     <SwiperSlide key={index}>
                         <MovieCard movie={movie} />
 
@@ -40,4 +35,4 @@ const TopRatedSlider = () => {
     )
 }
 
-export default TopRatedSlider
+export default MovieSlider
