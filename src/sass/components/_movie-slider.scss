@@ -3,14 +3,32 @@
     padding: 2rem 0 !important;
     .swiper-wrapper {
         align-items: center;
+        .swiper-slide {
+            .movie-card {
+                opacity: 0.5;
+                .movie-card__play{
+                    opacity: 0;
+                }
+            }
+            .movie-card__info {
+                z-index: 0;
+            }
+        }
+        .swiper-slide-next {
+            .movie-card {
+                height: 60rem;
+                opacity: 1;
+                
+                &:hover .movie-card__play {
+                    opacity: 1;
+                }
+            }
+            .movie-card__info {
+                z-index: 3;
+            }
+        }
     }
-    .swiper-slide .movie-card {
-        opacity: 0.5;
-    }
-    .swiper-slide-next .movie-card {
-        height: 60rem;
-        opacity: 1;
-    }
+
     .swiper-button-prev {
         right: 6rem;
         left: auto;
@@ -22,11 +40,11 @@
         border: 0.2rem solid $color-theme;
         width: 4rem;
         height: 4rem;
-        transition: all .4s;
-        &:hover{
+        transition: all 0.4s;
+        &:hover {
             background: $color-theme;
             border-color: $color-theme;
-            &::after{
+            &::after {
                 color: $color-black;
             }
         }

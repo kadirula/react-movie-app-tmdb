@@ -5,6 +5,9 @@
     border-radius: 0.5rem;
     height: 50rem;
     transition: opacity 1s ease-in-out;
+    &:hover &__play {
+        opacity: 1;
+    }
     &::before {
         content: "";
         position: absolute;
@@ -33,16 +36,16 @@
         padding: 3rem 0;
         width: 100%;
     }
-    &__text{
+    &__text {
         padding: 0 3rem;
     }
-    &__title{
+    &__title {
         color: $color-text;
         font-weight: 600;
         font-size: 2rem;
         margin-bottom: 1rem;
     }
-    &__desc{
+    &__desc {
         color: $color-text;
         font-size: 1.4rem;
         line-height: 1.6;
@@ -79,7 +82,7 @@
             color: $color-black;
         }
     }
-    &__vote{
+    &__vote {
         position: absolute;
         top: 2rem;
         right: 2rem;
@@ -89,7 +92,25 @@
         font-weight: 500;
         @include flex(center, unset);
         gap: 0.5rem;
-        &-icon{
+        &-icon {
+            color: $color-theme;
+        }
+    }
+
+    &__play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5rem;
+        height: 5rem;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        @include flex(center, center);
+        z-index: 10;
+        transition: all 0.7s;
+        &-icon {
+            font-size: 5rem;
             color: $color-theme;
         }
     }

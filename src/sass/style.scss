@@ -1,22 +1,25 @@
 /* utils */
-@import './utils/variables';
-@import './utils/mixins';
-@import './utils/animations';
-@import './utils/breakpoints';
+@import "./utils/variables";
+@import "./utils/mixins";
+@import "./utils/animations";
+@import "./utils/breakpoints";
 
 /* base */
-@import './base/reset';
-@import './base/base';
-@import './base/typography';
+@import "./base/reset";
+@import "./base/base";
+@import "./base/typography";
 
 /* layout */
-@import './layout/section';
-@import './layout/header';
+@import "./layout/section";
+@import "./layout/header";
 
 /* components */
-@import './components/button';
-@import './components/slider';
-@import './components/movie-card';
-@import './components/tag';
-@import './components/movie-banner';
-@import './components/movie-slider';
+@import "./components/button";
+@import "./components/pagination";
+@import "./components/slider";
+@import "./components/movie-slider";
+@import "./components/movie-card";
+@import "./components/video-card";
+@import "./components/tag";
+@import "./components/movie-banner";
+@import "./components/page-banner";

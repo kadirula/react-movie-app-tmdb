@@ -11,6 +11,8 @@ import 'swiper/css/autoplay';
 
 const MovieSlider = ({ movies }) => {
 
+    
+
     return (
         <Swiper
             className='movie-slider'
@@ -27,7 +29,6 @@ const MovieSlider = ({ movies }) => {
                 movies?.map((movie, index) => (
                     <SwiperSlide key={index}>
                         <MovieCard movie={movie} />
-
                     </SwiperSlide>
                 ))
             }
