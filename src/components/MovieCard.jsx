@@ -22,10 +22,14 @@ const MovieCard = ({ movie }) => {
                 <div className="movie-card__image">
                     <img src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt={movie.title} />
                 </div>
-                <div className="movie-card__vote">
-                    <AiFillStar className='movie-card__vote-icon' />
-                    {movie.vote_average} / 10
-                </div>
+                {
+                    movie.vote_average > 0 &&
+                    <div className="movie-card__vote">
+                        <AiFillStar className='movie-card__vote-icon' />
+                        {movie.vote_average} / 10
+                    </div>
+                }
+
                 <div className="movie-card__info">
                     <div className="movie-card__text">
                         <h4 className='movie-card__title'>{movie.title}</h4>

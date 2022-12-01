@@ -5,7 +5,7 @@ import { HiPlay } from "react-icons/hi";
 import PuffLoader from "react-spinners/PuffLoader";
 import MovieBannerInfo from '../MovieBannerInfo';
 
-const MovieBanner = () => {
+const MovieBanner = ({ type }) => {
 
     const [movie, setMovie] = useState(null);
     const [movieVideo, setMovieVideo] = useState(null);
@@ -13,14 +13,26 @@ const MovieBanner = () => {
     const [videoLoading, setVideoLoading] = useState(true);
 
     useEffect(() => {
-        fetchFromAPI(`movie/popular`).then(res => {
+        fetchFromAPI(`movie/${type}`).then(res => {
             if (res.status === 200) {
-                const filteredMovie = res.data.results.sort((a, b) => b.popularity - a.popularity)[0];
+
+                let filteredMovie = null;
+
+                if (type === 'popular') {
+                    filteredMovie = res.data.results.sort((a, b) => b.popularity - a.popularity)[0];
+                }
+
+                if (type === 'upcoming') {
+                    filteredMovie = res.data.results
+                        .filter(movie => new Date(movie.release_date) > new Date())
+                        .sort((a, b) => new Date(b.release_date) - new Date(a.release_date))[0];
+                }
+
                 setMovie(filteredMovie);
                 fetchFromAPI(`movie/${filteredMovie?.id}/videos`).then(res => {
                     if (res.status === 200) {
                         const movieVideoFiltered = res.data.results
-                            .filter(video => video.type === 'Teaser')
+                            .filter(video => video.type === 'Teaser' || video.type === 'Trailer')
                             .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
                         setMovieVideo(movieVideoFiltered);
                     }
