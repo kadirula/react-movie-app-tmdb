@@ -1,22 +1,24 @@
 .page-banner {
-    position: relative;
-    height: 40rem;
-    @include flex(center, center);
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: -webkit-linear-gradient(to right, #237a57, #093028);
-        background: linear-gradient(to right, #237a57, #093028);
-        z-index: -1;
-    }
-    &__title{
-        font-size: 4rem;
-        font-weight: 700;
-        color: $color-text;
-        letter-spacing: .3rem;
+    @include themify($themes) {
+        position: relative;
+        height: 40rem;
+        @include flex(center, center);
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: -webkit-linear-gradient(to right, #237a57, #093028);
+            background: linear-gradient(to right, #237a57, #093028);
+            z-index: -1;
+        }
+        &__title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: themed("text");
+            letter-spacing: 0.3rem;
+        }
     }
 }

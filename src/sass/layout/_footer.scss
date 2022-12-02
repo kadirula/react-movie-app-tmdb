@@ -1,11 +1,13 @@
-.footer{
-    padding: 1.5rem 0;
-    background: $color-bg;
-    text-align: center;
-    &__copyright{
-        color: #fff;
-        span{
-            color: $color-theme;
+.footer {
+    @include themify($themes) {
+        padding: 1.5rem 0;
+        background: themed('bg');
+        text-align: center;
+        &__copyright {
+            color: #fff;
+            span {
+                color: themed('theme');
+            }
         }
     }
 }

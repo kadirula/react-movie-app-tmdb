@@ -1,57 +1,62 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import PageBanner from '../components/PageBanner'
-import { fetchFromAPI } from '../api/fetch';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom'
 import MovieCard from '../components/MovieCard';
-import Pagination from '../components/Pagination';
+import PageBanner from '../components/PageBanner';
+import { fetchFromAPI } from '../api/fetch';
+import { setSearchMovie } from "../redux/reducers/searchReducer";
+import { setSearchStatus } from "../redux/reducers/siteReducer";
 import Loading from '../components/Loading';
+import Pagination from '../components/Pagination';
 
-const PopularMovies = () => {
 
-    
 
-    const [popularMovies, setPopularMovies] = useState([]);
+const Search = () => {
+
+    const dispatch = useDispatch();
+    const { value } = useParams();
+
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
     const [loading, setLoading] = useState(true);
 
+    const { searchMovie } = useSelector(state => state.search);
+
     useEffect(() => {
+
         setLoading(true);
+
         setTimeout(() => {
             setLoading(false);
         }, 1000);
 
-        fetchFromAPI('movie/popular', currentPage).then(res => {
+        fetchFromAPI('search/movie', currentPage, value).then(res => {
             if (res.status === 200) {
-                // popularity değeri en büyükten küçüğe doğru sıralar.
-                const filterPopularMovie = res.data.results
-                    .sort((a, b) => b.popularity - a.popularity);
-                setPopularMovies(filterPopularMovie);
-                setTotalPage(res.data.total_pages)
+                dispatch(setSearchMovie(res.data));
+                dispatch(setSearchStatus(false));
+                setTotalPage(res.data.total_pages);
             }
-        })
-    }, [currentPage])
-
-    
-    
-
+        });
+    }, [value, currentPage])
 
 
     return (
         <>
-            <PageBanner title='POPULAR MOVIES' />
+            <PageBanner title={`SEARCH: ${value}`} />
             <div className="section">
                 <Container>
                     {
                         loading ?
                             <div className='text-center'>
-                                <Loading loading={loading}/>
+                                <Loading loading={loading} />
                             </div>
                             :
                             <>
                                 <Row>
                                     {
-                                        popularMovies.map((movie, index) => (
+                                        searchMovie &&
+                                        searchMovie?.results.map((movie, index) => (
                                             <Col sm={4} md={3} key={index} className='my-2'>
                                                 <MovieCard movie={movie} />
                                             </Col>
@@ -73,9 +78,8 @@ const PopularMovies = () => {
 
                 </Container>
             </div>
-
         </>
     )
 }
 
-export default PopularMovies
+export default Search

@@ -1,8 +1,45 @@
-$color-bg: #1e293b;
-$color-black: #000;
-$color-theme: #4ade80;
-$color-text: #d4d4d4;
-$color-border: #919191;
-.asd{
-    background-color: #d4d4d4;
-}
+$themes: (
+  light: (
+    header: #1e293b,
+    bg: #fff,
+    dark: #000,
+    text: #d4d4d4,
+    theme: #4ade80,
+    border: #919191,
+    title: #000,
+    button-text: #fff,
+    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%)
+
+  ),
+  dark: (
+    header: #1e293b,
+    bg: #1e293b,
+    dark: #000,
+    text: #d4d4d4,
+    theme: #4ade80,
+    border: #919191,
+    title: #d4d4d4,
+    button-text: #fff,
+    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%)
+
+  ),
+);
+
+
+// $color-bg: #1e293b;
+// $color-black: #000;
+// $color-text: #d4d4d4;
+
+// $color-theme: #4ade80;
+
+// $color-border: #919191;
+
+
+// //page title
+// $color-title: #000;
+
+// // button
+// $color-button-text: #fff;
+// $button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%);
+
+

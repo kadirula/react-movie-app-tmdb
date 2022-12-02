@@ -1,23 +1,22 @@
 .toolbar {
-    position: fixed;
-    right: 0;
-    top: 10rem;
-    // background: $color-bg;
-    height: max-content;
-    z-index: 500;
-    &__item {
-        color: $color-theme;
-        background: $color-bg;
-        font-size: 2.5rem;
-        cursor: pointer;
-        padding: 1.5rem 1rem;
-        transition: all .5s;
-        &:not(:last-child) {
-            border-bottom: 1px solid $color-theme;
-        }
-        &:hover{
-            background: $color-theme;
-            color: $color-black;
+    @include themify($themes) {
+        position: fixed;
+        right: 0;
+        top: 10rem;
+        // background: $color-bg;
+        height: max-content;
+        z-index: 500;
+        &__item {
+            position: relative;
+            color: themed('theme');
+            background: themed('bg');
+            font-size: 2.5rem;
+            cursor: pointer;
+            padding: 1.5rem 1rem;
+            transition: all 0.5s;
+            &:not(:last-child) {
+                border-bottom: 1px solid themed('theme');
+            }
         }
     }
 }

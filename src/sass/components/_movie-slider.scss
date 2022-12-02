@@ -1,56 +1,58 @@
 .movie-slider {
-    margin-top: 3rem;
-    padding: 2rem 0 !important;
-    .swiper-wrapper {
-        align-items: center;
-        .swiper-slide {
-            .movie-card {
-                opacity: 0.5;
-                .movie-card__play{
-                    opacity: 0;
+    @include themify($themes) {
+        margin-top: 3rem;
+        padding: 2rem 0 !important;
+        .swiper-wrapper {
+            align-items: center;
+            .swiper-slide {
+                .movie-card {
+                    opacity: 0.5;
+                    .movie-card__play {
+                        opacity: 0;
+                    }
+                }
+                .movie-card__info {
+                    z-index: 0;
                 }
             }
-            .movie-card__info {
-                z-index: 0;
-            }
-        }
-        .swiper-slide-next {
-            .movie-card {
-                height: 60rem;
-                opacity: 1;
-                
-                &:hover .movie-card__play {
+            .swiper-slide-next {
+                .movie-card {
+                    height: 60rem;
                     opacity: 1;
+
+                    &:hover .movie-card__play {
+                        opacity: 1;
+                    }
+                }
+                .movie-card__info {
+                    z-index: 3;
                 }
             }
-            .movie-card__info {
-                z-index: 3;
-            }
         }
-    }
 
-    .swiper-button-prev {
-        right: 6rem;
-        left: auto;
-    }
-    .swiper-button-prev,
-    .swiper-button-next {
-        top: 3rem;
-        border-radius: 50%;
-        border: 0.2rem solid $color-theme;
-        width: 4rem;
-        height: 4rem;
-        transition: all 0.4s;
-        &:hover {
-            background: $color-theme;
-            border-color: $color-theme;
-            &::after {
-                color: $color-black;
-            }
+        .swiper-button-prev {
+            right: 6rem;
+            left: auto;
         }
-        &::after {
-            font-size: 1.3rem;
-            color: $color-black;
+        .swiper-button-prev,
+        .swiper-button-next {
+            top: 3rem;
+            border-radius: 50%;
+            border: 0.2rem solid themed('theme');
+            width: 4rem;
+            height: 4rem;
+            transition: all 0.4s;
+            &:hover {
+                background: themed('theme');
+                border-color: themed('theme');
+                &::after {
+                    color: themed('dark');
+                }
+            }
+            &::after {
+                font-size: 1.3rem;
+                color: themed('dark');
+            }
         }
     }
 }

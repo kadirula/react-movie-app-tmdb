@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import PopularMovies from "../pages/PopularMovies";
+import Search from "../pages/Search";
 import TopRatedMovies from "../pages/TopRatedMovies";
 import UpcomingMovies from "../pages/UpcomingMovies";
 import Layout from "./Layout";
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path: '/upcoming',
                 element: <UpcomingMovies />
+            },
+            {
+                path: '/search/:value',
+                element: <Search />
             },
         ]
     },

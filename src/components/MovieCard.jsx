@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { HiPlay } from "react-icons/hi";
-import ModalContent from './modal/ModalContent';
 import { useDispatch } from 'react-redux';
 import { setMovieModal } from '../redux/reducers/modalReducer'
+import NoImage from '../assets/NoImage.png';
 
 const MovieCard = ({ movie }) => {
 
@@ -20,7 +19,7 @@ const MovieCard = ({ movie }) => {
         <>
             <div className="movie-card">
                 <div className="movie-card__image">
-                    <img src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} alt={movie.title} />
+                    <img src={movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : NoImage} alt={movie.title} />
                 </div>
                 {
                     movie.vote_average > 0 &&

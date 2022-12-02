@@ -1,25 +1,26 @@
-.heading{
-    position: relative;
-    padding-left: 1.5rem;
-    &::before{
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0.3rem;
-        height: 100%;
-        background: $color-theme;
+.heading {
+    @include themify($themes) {
+        position: relative;
+        padding-left: 1.5rem;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0.3rem;
+            height: 100%;
+            background: themed("theme");
+        }
+        &__title {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: 0.3rem;
+            margin-bottom: 0.5rem;
+            color: themed("title");
+        }
+        &__desc {
+            font-size: 1.5rem;
+            color: lighten(themed("title"), 30%);
+        }
     }
-    &__title{
-        font-size: 4rem;
-        font-weight: 600;
-        letter-spacing: 0.3rem;
-        margin-bottom: 0.5rem;
-        color: $color-black;
-    }
-    &__desc{
-        font-size: 1.5rem;
-        color: lighten($color-black, 30%);
-    }
-    
 }
