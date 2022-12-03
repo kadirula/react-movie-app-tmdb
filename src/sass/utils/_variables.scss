@@ -1,26 +1,41 @@
 $themes: (
   light: (
     header: #1e293b,
-    bg: #fff,
-    dark: #000,
+    border: #919191,
+    before: rgba(#000, 0.73),
     text: #d4d4d4,
     theme: #4ade80,
-    border: #919191,
     title: #000,
+    movie-button: #1e293b,
+    movie-button-text: #000,
+    bg: #fff,
     button-text: #fff,
-    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%)
+    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%),
+    banner-gradient: linear-gradient(to right, #237a57, #093028),
+    toolbar: #333539,
+    pagination-bg: #1e293b,
+    pagination-text: #fff,
+    pagination-active: #4ade80,
+    
 
   ),
   dark: (
     header: #1e293b,
-    bg: #1e293b,
-    dark: #000,
+    border: #919191,
+    before: rgba(#000, 0.73),
     text: #d4d4d4,
     theme: #4ade80,
-    border: #919191,
     title: #d4d4d4,
+    movie-button: #1e293b,
+    movie-button-text: #000,
+    bg: #1e293b,
     button-text: #fff,
-    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%)
+    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%),
+    banner-gradient: linear-gradient(to right, #237a57, #093028),
+    toolbar: #1e293b,
+    pagination-bg: #000,
+    pagination-text: #fff,
+    pagination-active: #4ade80,
 
   ),
 );

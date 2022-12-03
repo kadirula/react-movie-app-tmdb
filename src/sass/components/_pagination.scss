@@ -4,7 +4,7 @@
         padding: 2rem 0;
         button {
             border: none;
-            background: themed('border');
+            background: themed('pagination-bg');
             margin: 0 1rem;
             padding: 1rem 2rem;
             font-size: 1.4rem;
@@ -15,20 +15,20 @@
                 opacity: 0.6;
             }
             &.active {
-                background: themed('bg');
+                background: themed('pagination-active');
                 color: themed('text');
             }
             &.prev {
                 border-top-left-radius: 3rem;
                 border-bottom-left-radius: 0rem;
                 background: themed('theme');
-                color: themed('dark');
+                color: themed('pagination-text');
             }
             &.next {
                 border-top-right-radius: 3rem;
                 border-bottom-right-radius: 0rem;
                 background: themed('theme');
-                color: themed('dark');
+                color: themed('pagination-text');
             }
         }
     }

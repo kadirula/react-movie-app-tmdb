@@ -16,7 +16,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(themed('dark'), 0.7);
+            background: themed('before');
             z-index: 2;
         }
         &__image {
@@ -57,7 +57,7 @@
         }
         &__button {
             color: themed('text');
-            background-color: themed('bg');
+            background: themed('movie-button');
             padding: 1rem 2rem;
             border-top-right-radius: 3rem;
             border-bottom-right-radius: 3rem;
@@ -66,12 +66,12 @@
             transition: all 0.4s;
             &:hover {
                 background: themed('theme');
-                color: themed('dark');
+                color: themed('movie-button-text');
             }
         }
         &__date {
             color: themed('text');
-            background-color: themed('bg');
+            background: themed('movie-button');
             padding: 1rem 2rem;
             border-top-left-radius: 3rem;
             border-bottom-left-radius: 3rem;
@@ -80,7 +80,7 @@
             transition: all 0.4s;
             &:hover {
                 background: themed('theme');
-                color: themed('dark');
+                color: themed('movie-button-text');
             }
         }
         &__vote {

@@ -38,7 +38,7 @@
         .swiper-button-next {
             top: 3rem;
             border-radius: 50%;
-            border: 0.2rem solid themed('theme');
+            border: 0.2rem solid themed('border');
             width: 4rem;
             height: 4rem;
             transition: all 0.4s;
@@ -46,12 +46,12 @@
                 background: themed('theme');
                 border-color: themed('theme');
                 &::after {
-                    color: themed('dark');
+                    color: themed('text');
                 }
             }
             &::after {
                 font-size: 1.3rem;
-                color: themed('dark');
+                color: themed('title');
             }
         }
     }

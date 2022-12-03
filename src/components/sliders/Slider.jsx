@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
+import { Link } from 'react-router-dom';
 
 
 const Slider = () => {
@@ -72,7 +73,7 @@ const Slider = () => {
                                             {
                                                 movie.vote_average > 0 && <span className='slider__vote'>{movie.vote_average}</span>
                                             }
-                                            <a href="#" className='button'>Detail</a>
+                                            <Link to={`/movie/${movie.id}`} className='button'>Detail</Link>
                                         </div>
 
                                     </div>
