@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import ScrollArrowImage from '../../assets/scroll-arrow.png';
 import { fetchFromAPI } from '../../api/fetch';
 import Container from 'react-bootstrap/Container';
 import Genres from '../Genres';
+import { Link } from 'react-router-dom';
+import { setUpcomingMovies } from '../../redux/reducers/movieReducer'
+import { useDispatch, useSelector } from 'react-redux';
 
 // Swiper
 import { Navigation, EffectFade, Autoplay } from 'swiper';
@@ -11,13 +13,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
-import { Link } from 'react-router-dom';
 
 
 const Slider = () => {
 
-    // const { upcomingMovies } = useSelector(state => state.upcoming)
-    const [movies, setMovies] = useState([]);
+    const dispatch = useDispatch();
+    const { upcomingMovies } = useSelector(state => state.movie);
 
     useEffect(() => {
 
@@ -33,7 +34,7 @@ const Slider = () => {
                     .filter(movie => new Date(movie.release_date) > new Date())
                     .sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
 
-                    setMovies(filterMovies)
+                    dispatch(setUpcomingMovies(filterMovies));
             }
         })
 
@@ -53,7 +54,7 @@ const Slider = () => {
                 }}
             >
                 {
-                    movies?.map((movie, index) => (
+                    upcomingMovies?.map((movie, index) => (
                         <SwiperSlide key={index}>
                             <div className="slider__item">
                                 <div className="slider__image">
@@ -83,9 +84,6 @@ const Slider = () => {
                     ))
                 }
             </Swiper>
-            <a href='#top-rated' className="slider__arrow">
-                <img src={ScrollArrowImage} alt="Scroll Arrow" />
-            </a>
         </div>
     )
 }

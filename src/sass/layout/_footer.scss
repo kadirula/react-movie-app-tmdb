@@ -1,7 +1,7 @@
 .footer {
     @include themify($themes) {
         padding: 1.5rem 0;
-        background: themed('bg');
+        background: themed('footer');
         text-align: center;
         &__copyright {
             color: #fff;

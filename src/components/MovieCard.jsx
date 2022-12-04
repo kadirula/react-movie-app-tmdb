@@ -3,6 +3,7 @@ import { HiPlay } from "react-icons/hi";
 import { useDispatch } from 'react-redux';
 import { setMovieModal } from '../redux/reducers/modalReducer'
 import NoImage from '../assets/NoImage.png';
+import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
 
@@ -37,7 +38,7 @@ const MovieCard = ({ movie }) => {
                         </p>
                     </div>
                     <div className="movie-card__bottom">
-                        <a href='#' className="movie-card__button">Detail</a>
+                        <Link to={`/movie/${movie.id}`} className="movie-card__button">Detail</Link>
                         <span className="movie-card__date">{movie.release_date}</span>
                     </div>
                 </div>

@@ -29,6 +29,7 @@ const MovieBanner = ({ type }) => {
                 }
 
                 setMovie(filteredMovie);
+
                 fetchFromAPI(`movie/${filteredMovie?.id}/videos`).then(res => {
                     if (res.status === 200) {
                         const movieVideoFiltered = res.data.results
@@ -43,17 +44,13 @@ const MovieBanner = ({ type }) => {
 
     }, [])
 
-    useEffect(() => {
-
-    }, [])
-
-
     const toggleVideoPlaying = () => {
         setIsVideo(!isVideo);
         setTimeout(() => {
             setVideoLoading(!videoLoading);
         }, 1500);
     }
+
     return (
         <>
             <div className='movie-banner'>
@@ -102,6 +99,7 @@ const MovieBanner = ({ type }) => {
                             :
                             <>
                                 <MovieBannerInfo
+                                    movieId={movie?.id}
                                     title={movie?.title}
                                     overview={movie?.overview}
                                 />
