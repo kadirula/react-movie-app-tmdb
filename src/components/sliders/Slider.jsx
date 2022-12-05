@@ -25,7 +25,6 @@ const Slider = () => {
         // YAKLAŞAN FİLMLER
         fetchFromAPI(`movie/upcoming`).then(res => {
             if (res.status === 200) {
-
                 /* 
                 - ilk olarak filter metodunda gelen tarih değeri sistem tarihinden büyük olanları yakalıyoruz.
                 - Daha sonra yakaladığımız tarih değerlerini sort metodu ile sıralıyoruz. Sistem tarihine en yakın olan tarih ilk olarak gelir.

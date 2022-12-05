@@ -1,22 +1,40 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
-import { fetchFromAPI } from '../api/fetch';
-import { setComments } from '../redux/reducers/commentReducer';
+import React from 'react'
+import { useSelector } from 'react-redux';
+import AvatarImage from '../assets/avatar.jpg'
 
-const Comment = ({ movieId }) => {
+const Comment = () => {
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        fetchFromAPI(`movie/${movieId}/reviews`).then(res => {
-            if (res.status === 200) {
-                dispatch(setComments(res.data))
-            }
-        })
-    }, []);
+    const { comments } = useSelector(state => state.movie);
 
     return (
-        <div>Comment</div>
+        <>
+            {
+                comments.results.map((comment, index) => (
+                    <div className='comment' key={index}>
+                        <div className="comment__image">
+                            <img src={
+                                comment.author_details.avatar_path ?
+                                    (
+                                        comment.author_details.avatar_path?.indexOf('/https') == 0 ?
+                                            comment.author_details.avatar_path?.replace('/https', 'https') :
+                                            comment.author_details.avatar_path?.replace('/', 'https://www.gravatar.com/avatar/')
+                                    )
+                                    :
+                                    AvatarImage
+                            } alt={comment.author_details.name} />
+                        </div>
+                        <div className="comment__info">
+                            <div className="comment__text">
+                                <h4 className='comment__author'>{comment.author_details.name ? comment.author_details.name : 'User'}</h4>
+                                <p className="comment__desc">{comment.content}</p>
+                            </div>
+                            <div className="comment__date">{new Date(comment.created_at).toDateString()}</div>
+                        </div>
+                    </div>
+                ))
+            }
+        </>
+
     )
 }
 

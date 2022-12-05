@@ -5,12 +5,17 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Container } from 'react-bootstrap';
 import Comment from '../components/Comment';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCast, setComments, setImages } from '../redux/reducers/movieReducer';
+import Cast from '../components/Cast';
+import Images from '../components/Images';
 
 const MovieDetail = () => {
 
+    const dispatch = useDispatch();
     const { id } = useParams();
-    const { comments } = useSelector(state => state.comment);
+
+    const { comments, cast, images } = useSelector(state => state.movie);
 
     const [movie, setMovie] = useState(null);
 
@@ -19,11 +24,29 @@ const MovieDetail = () => {
         fetchFromAPI(`movie/${id}`).then(res => {
             if (res.status === 200) {
                 setMovie(res.data);
-                // console.log(res.data);
             }
         })
-    }, [id])
 
+        fetchFromAPI(`movie/${id}/reviews`).then(res => {
+            if (res.status === 200) {
+                dispatch(setComments(res.data))
+            }
+        })
+
+        fetchFromAPI(`movie/${id}/credits`).then(res => {
+            if (res.status === 200) {
+                const filteredCast = res.data.cast.sort((a, b) => a.order - b.order);
+                dispatch(setCast(filteredCast))
+            }
+        })
+
+        fetchFromAPI(`movie/${id}/images`).then(res => {
+            if (res.status === 200) {
+                dispatch(setImages(res.data.backdrops))
+            }
+        })
+
+    }, [id])
 
     return (
         <>
@@ -49,17 +72,23 @@ const MovieDetail = () => {
                     <Tabs>
                         {
                             comments?.results.length > 0 &&
-
                             <Tab eventKey="comments" title="Comments">
-                                <Comment movieId={id} />
+                                <Comment />
                             </Tab>
                         }
-                        <Tab eventKey="cast" title="Cast">
-                            2
-                        </Tab>
-                        <Tab eventKey="images" title="Images">
-                            3
-                        </Tab>
+                        {
+                            cast?.length > 0 &&
+                            <Tab eventKey="cast" title="Cast">
+                                <Cast />
+                            </Tab>
+                        }
+                        {
+                            images?.length > 0 &&
+                            <Tab eventKey="images" title="Images">
+                                <Images />
+                            </Tab>
+                        }
+
                         <Tab eventKey="videos" title="Videos">
                             4
                         </Tab>

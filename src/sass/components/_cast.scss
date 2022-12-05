@@ -1,0 +1,28 @@
+.cast{
+    margin: 1rem 0;
+    &__image{
+        height: 450px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__info{
+        text-align: center;
+        padding: 2rem;
+        background: #d4d4d4;
+        min-height: 11rem;
+    }
+    &__name{
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    &__character{
+        font-size: 1.5rem;
+        span{
+            font-weight: 600;
+        }
+    }
+}

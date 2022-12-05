@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player'
 import { HiPlay } from "react-icons/hi";
 import PuffLoader from "react-spinners/PuffLoader";
 import MovieBannerInfo from '../MovieBannerInfo';
+import { useDispatch } from 'react-redux';
 
 const MovieBanner = ({ type }) => {
 
@@ -12,11 +13,13 @@ const MovieBanner = ({ type }) => {
     const [isVideo, setIsVideo] = useState(true);
     const [videoLoading, setVideoLoading] = useState(true);
 
+
+
     useEffect(() => {
         fetchFromAPI(`movie/${type}`).then(res => {
             if (res.status === 200) {
 
-                let filteredMovie = null;
+                let filteredMovie;
 
                 if (type === 'popular') {
                     filteredMovie = res.data.results.sort((a, b) => b.popularity - a.popularity)[0];
@@ -62,6 +65,7 @@ const MovieBanner = ({ type }) => {
                     {
                         movieVideo &&
                         <MovieBannerInfo
+                            movieId={movie?.id}
                             title={movie?.title}
                             overview={movie?.overview}
                         />

@@ -11,30 +11,25 @@ const Home = () => {
   return (
     <>
       <Slider />
+      
       <section className="section">
-
         <TopRatedMovie />
-
       </section>
-      <section className="section section-movie-banner py-0">
 
+      <section className="section section-movie-banner py-0">
         <MovieBanner type='popular' />
-
       </section>
-      <section className="section">
 
+      <section className="section">
         <PopularMovie />
-
       </section>
+
       <section className="section section-movie-banner py-0">
-
         <MovieBanner type='upcoming' />
-
       </section>
+
       <section className="section">
-
         <NowPlayingMovie/>
-
       </section>
     </>
   )
