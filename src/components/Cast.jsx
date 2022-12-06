@@ -14,7 +14,7 @@ const Cast = () => {
                 <Row>
                     {
                         cast?.map((item, index) => (
-                            <Col sm={4} md={3} key={index}>
+                            <Col md={4} lg={3} key={index}>
                                 <div className='cast'>
                                     <div className="cast__image">
                                         <img src={

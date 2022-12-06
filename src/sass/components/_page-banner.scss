@@ -3,6 +3,11 @@
         position: relative;
         height: 40rem;
         @include flex(center, center);
+
+        @include mobile(){
+            height: 20rem;
+        }
+
         &::before {
             content: "";
             position: absolute;

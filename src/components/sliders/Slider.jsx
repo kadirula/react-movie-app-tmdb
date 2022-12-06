@@ -70,9 +70,6 @@ const Slider = () => {
                                         }
 
                                         <div className="slider__info-bottom">
-                                            {
-                                                movie.vote_average > 0 && <span className='slider__vote'>{movie.vote_average}</span>
-                                            }
                                             <Link to={`/movie/${movie.id}`} className='button'>Detail</Link>
                                         </div>
 

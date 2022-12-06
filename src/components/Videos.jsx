@@ -15,6 +15,8 @@ const Videos = () => {
                             <ReactPlayer
                                 url={`https://www.youtube.com/watch?v=${video?.key}`}
                                 controls
+                                className='w-100'
+                                style={{minHeight: '40rem'}}
                             />
                         </Col>
                     ))

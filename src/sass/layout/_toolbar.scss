@@ -6,6 +6,9 @@
         // background: $color-bg;
         height: max-content;
         z-index: 500;
+        @include mobile(){
+            top: 10rem;
+        }
         &__item {
             position: relative;
             color: themed('toolbar-text');

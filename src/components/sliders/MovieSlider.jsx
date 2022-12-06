@@ -11,18 +11,26 @@ import 'swiper/css/autoplay';
 
 const MovieSlider = ({ movies }) => {
 
-    
+
 
     return (
         <Swiper
             className='movie-slider'
             modules={[Navigation]}
-            slidesPerView={3}
+
             spaceBetween={10}
             loop={true}
             navigation={true}
             autoplay={{
                 delay: 4000
+            }}
+            breakpoints={{
+                0: {
+                    slidesPerView: 1
+                },
+                768: {
+                    slidesPerView: 3
+                }
             }}
         >
             {

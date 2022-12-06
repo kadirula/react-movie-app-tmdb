@@ -4,12 +4,20 @@
         height: 50rem;
         position: relative;
         @include flex(center, space-between);
+        @include mobile(){
+            flex-direction: column;            
+        }
 
         &__left {
             width: 50%;
             height: 100%;
             position: relative;
             @include flex(center, center);
+
+            @include mobile(){
+                width: 100%;
+                padding: 2rem 2rem;
+            }
             &::before {
                 content: "";
                 position: absolute;
@@ -26,6 +34,9 @@
             height: 100%;
             @include flex(center, center);
             position: relative;
+            @include mobile(){
+                width: 100%;
+            }
         }
         &__image {
             position: absolute;
@@ -41,6 +52,7 @@
             z-index: 15;
             max-width: 50rem;
             margin: 0 auto;
+            padding: 0 2rem;
         }
         &__title {
             font-size: 4rem;

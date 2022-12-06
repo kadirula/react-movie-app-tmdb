@@ -4,6 +4,9 @@
         &__wrapper {
             height: 97vh;
             position: relative;
+            @include mobile(){
+                height: 80vh;
+            }
         }
 
         &__item {
@@ -40,22 +43,15 @@
             max-width: 85rem;
             transform: scale(1.08);
             transition: all 0.7s ease-in-out;
+            @include mobile(){
+                padding: 0 2rem;
+            }
             &-bottom {
                 display: flex;
                 align-items: center;
                 gap: 2rem;
                 margin-top: 1.5rem;
             }
-        }
-        &__vote {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            @include flex(center, center);
-            border: 0.2rem solid themed('border');
-            font-size: 1.3rem;
-            color: themed('slider-text');
-            font-weight: 700;
         }
         &__date {
             color: themed('slider-text');

@@ -2,17 +2,26 @@
     @include themify($themes) {
         margin-top: 3rem;
         padding: 2rem 0 !important;
+        @include mobile(){
+            padding: 0 !important;
+        }
         .swiper-wrapper {
             align-items: center;
             .swiper-slide {
                 .movie-card {
                     opacity: 0.5;
+                    @include mobile(){
+                        opacity: 1;
+                    }
                     .movie-card__play {
                         opacity: 0;
                     }
                 }
                 .movie-card__info {
                     z-index: 0;
+                    @include mobile(){
+                        z-index: 2;
+                    }
                 }
             }
             .swiper-slide-next {

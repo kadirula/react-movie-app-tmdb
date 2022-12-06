@@ -11,7 +11,7 @@ const Images = () => {
             <Row>
                 {
                     images.map((image, index) => (
-                        <Col sm={4} key={index}>
+                        <Col md={4} key={index}>
                             <img src={`https://image.tmdb.org/t/p/w780${image.file_path}`} className='img-fluid' alt="" />
                         </Col>
                     ))

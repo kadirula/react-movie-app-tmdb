@@ -2,5 +2,9 @@
     @include themify($themes) {
         padding: 5rem 0;
         background: themed('bg');
+
+        @include mobile(){
+            padding: 3rem 1rem;
+        }
     }
 }

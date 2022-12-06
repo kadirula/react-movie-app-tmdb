@@ -6,6 +6,11 @@
         top: 0;
         width: 100%;
         z-index: 100;
+        @include mobile(){
+            padding: 3rem 0;
+            background: themed('header');
+            position: relative;
+        }
         &::before {
             content: "";
             width: 100%;
@@ -28,6 +33,7 @@
             top: 0;
         }
         &__wrapper {
+            position: relative;
             @include flex(center, space-between);
         }
         &__logo {
@@ -46,6 +52,27 @@
         &__menu {
             @include flex(center, flex-start);
             border-bottom: 0.1rem solid themed('border');
+
+            @include mobile() {
+                position: absolute;
+                top: -100%;
+                left: 0;
+                width: 100%;
+                height: max-content;
+                flex-direction: column;
+                background: themed('header');
+                z-index: 30;
+                padding: 2rem 0;
+                opacity: 0;
+                z-index: -1;
+                transition: all 0.6s;
+                &.show {
+                    top: 100%;
+                    opacity: 1;
+                    z-index: 1;
+                }
+            }
+
             &-item {
                 position: relative;
                 color: themed('menu-text');
@@ -56,6 +83,9 @@
                 padding: 0 2rem 1rem;
                 cursor: pointer;
                 transition: all 0.4s;
+                @include mobile(){
+                    padding: 1rem 2rem;
+                }
                 &::before {
                     content: "";
                     position: absolute;
@@ -77,6 +107,9 @@
                     height: 0.1rem;
                     background: themed('border');
                     transition: all 0.4s ease-in-out;
+                    @include mobile(){
+                        display: none;
+                    }
                 }
                 &.active {
                     color: themed('theme');
@@ -99,6 +132,18 @@
                         width: 100%;
                     }
                 }
+            }
+        }
+
+        &__hamburger {
+            display: none;
+            color: themed('theme');
+            &-icon {
+                width: 4rem !important;
+                height: 4rem !important;
+            }
+            @include mobile() {
+                display: block;
             }
         }
     }

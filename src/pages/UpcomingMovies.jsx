@@ -49,7 +49,7 @@ const UpcomingMovies = () => {
                                 <Row>
                                     {
                                         upcomingMovies.map((movie, index) => (
-                                            <Col sm={4} md={3} key={index} className='my-2'>
+                                            <Col md={4} lg={3} key={index} className='my-2'>
                                                 <MovieCard movie={movie} />
                                             </Col>
                                         ))

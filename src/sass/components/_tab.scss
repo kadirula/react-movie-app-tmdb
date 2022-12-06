@@ -10,6 +10,10 @@
             border-radius: 0;
             font-size: 2rem;
             letter-spacing: 0.4rem;
+            font-weight: 600;
+            @include mobile(){
+                font-size: 1.5rem;
+            }
         }
         .nav-link.active {
             background: #4ade80;
