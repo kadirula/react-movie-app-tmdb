@@ -27,9 +27,6 @@ const ModalContent = ({ children }) => {
                 size="lg"
                 centered
             >
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
                 <Modal.Body>{children}</Modal.Body>
             </Modal>
         </div>

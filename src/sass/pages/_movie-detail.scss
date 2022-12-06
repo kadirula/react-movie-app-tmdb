@@ -29,16 +29,16 @@
             position: relative;
             text-align: center;
             z-index: 2;
-            max-width: 50rem;
+            max-width: 80rem;
         }
         &__title{
-            color: themed('text');
-            font-size: 4rem;
+            color: themed('movie-detail-text');
+            font-size: 6rem;
             text-transform: uppercase;
             letter-spacing: .4rem;
         }
         &__desc{
-            color: themed('text');
+            color: themed('movie-detail-text');
             margin: 2rem 0;
             font-size: 1.6rem;
             line-height: 1.6;

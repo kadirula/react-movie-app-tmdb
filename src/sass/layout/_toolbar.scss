@@ -2,13 +2,13 @@
     @include themify($themes) {
         position: fixed;
         right: 0;
-        top: 10rem;
+        top: 20rem;
         // background: $color-bg;
         height: max-content;
         z-index: 500;
         &__item {
             position: relative;
-            color: themed('theme');
+            color: themed('toolbar-text');
             background: themed('toolbar');
             font-size: 2.5rem;
             cursor: pointer;

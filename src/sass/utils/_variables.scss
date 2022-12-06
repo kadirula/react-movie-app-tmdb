@@ -1,64 +1,64 @@
 $themes: (
   light: (
-    header: #1e293b,
-    border: #919191,
-    before: rgba(#000, 0.73),
-    text: #d4d4d4,
     theme: #4ade80,
+    border: #919191,
+    header: #1e293b,
+    menu-text: #d4d4d4,
+    before: rgba(#000, 0.7),
+    slider-text: #d4d4d4,
+    slider-navigation-text: #919191,
     title: #000,
+    movie-text: #d4d4d4,
     movie-button: #1e293b,
     movie-button-text: #000,
-    bg: #fff,
-    button-text: #fff,
-    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%),
+    movie-banner-text: #d4d4d4,
+    page-banner-text: #d4d4d4,
     banner-gradient: linear-gradient(to right, #237a57, #093028),
-    toolbar: #333539,
     pagination-bg: #1e293b,
     pagination-text: #fff,
     pagination-active: #4ade80,
-    footer: #1e293b,
-    comment: #d4d4d4
-    
-
-  ),
-  dark: (
-    header: #1e293b,
-    border: #919191,
-    before: rgba(#000, 0.73),
-    text: #d4d4d4,
-    theme: #4ade80,
-    title: #d4d4d4,
-    movie-button: #1e293b,
-    movie-button-text: #000,
-    bg: #1e293b,
+    bg: #fff,
     button-text: #fff,
     button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%),
-    banner-gradient: linear-gradient(to right, #237a57, #093028),
+    tab-text: #000,
     toolbar: #1e293b,
+    toolbar-text: #4ade80,
+    comment: #1e293b,
+    comment-text: #d4d4d4,
+    movie-detail-text: #d4d4d4,
+    footer: #1e293b,
+    footer-text: #fff,
+  ),
+  dark: (
+    theme: #4ade80,
+    border: #919191,
+    header: #1e293b,
+    menu-text: #d4d4d4,
+    before: rgba(rgb(33, 31, 31), 0.5),
+    slider-text: #d4d4d4,
+    slider-navigation-text: #919191,
+    title: #d4d4d4,
+    movie-text: #d4d4d4,
+    movie-button: #1e293b,
+    movie-button-text: #000,
+    movie-banner-text: #d4d4d4,
+    page-banner-text: #d4d4d4,
+    banner-gradient: linear-gradient(to right, #237a57, #093028),
     pagination-bg: #000,
     pagination-text: #fff,
     pagination-active: #4ade80,
-    footer: #1e293b,
-    comment: #d4d4d4
-
+    bg: #1e293b,
+    button-text: #fff,
+    button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%),
+    tab-text: #fff,
+    toolbar: #4ade80,
+    toolbar-text: #000,
+    comment: #d4d4d4,
+    comment-text: #000,
+    movie-detail-text: #d4d4d4,
+    footer: #525050,
+    footer-text: #fff,
   ),
 );
-
-
-// $color-bg: #1e293b;
-// $color-black: #000;
-// $color-text: #d4d4d4;
-
-// $color-theme: #4ade80;
-
-// $color-border: #919191;
-
-
-// //page title
-// $color-title: #000;
-
-// // button
-// $color-button-text: #fff;
-// $button-gradient: linear-gradient(to right, #1d976c 0%, #93f9b9 51%, #1d976c 100%);
 
 

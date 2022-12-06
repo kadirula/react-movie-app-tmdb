@@ -4,7 +4,7 @@
         background: themed('footer');
         text-align: center;
         &__copyright {
-            color: #fff;
+            color: themed('footer-text');
             span {
                 color: themed('theme');
             }

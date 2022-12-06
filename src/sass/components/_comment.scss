@@ -17,6 +17,7 @@
             @include flex(flex-start, space-between);
             gap: 4rem;
             width: 100%;
+            color: themed('comment-text');
         }
         &__text{
             width: 85%;

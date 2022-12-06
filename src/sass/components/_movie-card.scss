@@ -41,13 +41,13 @@
             padding: 0 3rem;
         }
         &__title {
-            color: themed('text');
+            color: themed('movie-text');
             font-weight: 600;
             font-size: 2rem;
             margin-bottom: 1rem;
         }
         &__desc {
-            color: themed('text');
+            color: themed('movie-text');
             font-size: 1.4rem;
             line-height: 1.6;
         }
@@ -56,7 +56,7 @@
             margin-top: 2rem;
         }
         &__button {
-            color: themed('text');
+            color: themed('movie-text');
             background: themed('movie-button');
             padding: 1rem 2rem;
             border-top-right-radius: 3rem;
@@ -70,7 +70,7 @@
             }
         }
         &__date {
-            color: themed('text');
+            color: themed('movie-text');
             background: themed('movie-button');
             padding: 1rem 2rem;
             border-top-left-radius: 3rem;
@@ -87,7 +87,7 @@
             position: absolute;
             top: 2rem;
             right: 2rem;
-            color: themed('text');
+            color: themed('movie-text');
             z-index: 10;
             font-size: 1.4rem;
             font-weight: 500;

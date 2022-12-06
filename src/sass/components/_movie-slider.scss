@@ -46,12 +46,12 @@
                 background: themed('theme');
                 border-color: themed('theme');
                 &::after {
-                    color: themed('text');
+                    color: darken(themed('slider-navigation-text'), 40%);
                 }
             }
             &::after {
                 font-size: 1.3rem;
-                color: themed('title');
+                color: themed('slider-navigation-text');
             }
         }
     }

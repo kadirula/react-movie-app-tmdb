@@ -1,0 +1,19 @@
+.tab {
+    @include themify($themes) {
+        border: none;
+        justify-content: center;
+        padding: 0 0 2rem;
+        .nav-link {
+            border: 0;
+            color: themed('tab-text');
+            text-transform: uppercase;
+            border-radius: 0;
+            font-size: 2rem;
+            letter-spacing: 0.4rem;
+        }
+        .nav-link.active {
+            background: #4ade80;
+            color: themed('tab-text');
+        }
+    }
+}

@@ -6,21 +6,30 @@ import Tabs from 'react-bootstrap/Tabs';
 import { Container } from 'react-bootstrap';
 import Comment from '../components/Comment';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCast, setComments, setImages } from '../redux/reducers/movieReducer';
+import { setCast, setComments, setImages, setVideos } from '../redux/reducers/movieReducer';
 import Cast from '../components/Cast';
 import Images from '../components/Images';
+import Videos from '../components/Videos';
+import Loading from '../components/Loading';
 
 const MovieDetail = () => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    const { comments, cast, images } = useSelector(state => state.movie);
-
     const [movie, setMovie] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const { comments, cast, images, videos } = useSelector(state => state.movie);
+
 
 
     useEffect(() => {
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 1400);
+
         fetchFromAPI(`movie/${id}`).then(res => {
             if (res.status === 200) {
                 setMovie(res.data);
@@ -46,8 +55,22 @@ const MovieDetail = () => {
             }
         })
 
+        fetchFromAPI(`movie/${id}/videos`).then(res => {
+            if (res.status === 200) {
+                const filteredVideo = res.data.results
+                    .filter(video =>
+                        video.type === 'Teaser' ||
+                        video.type === 'Trailer')
+                    .sort((a, b) => new Date(b.published_at) - new Date(a.published_at)).slice(0, 2);
+                dispatch(setVideos(filteredVideo))
+            }
+        })
+
     }, [id])
 
+    if(loading){
+        return <div className='section'><Loading loading={loading} /></div>
+    }
     return (
         <>
             <div className='movie-detail'>
@@ -56,7 +79,6 @@ const MovieDetail = () => {
                 </div>
                 <div className="movie-detail__info">
                     <h3 className='movie-detail__title'>{movie?.title}</h3>
-                    <p className='movie-detail__desc'>{movie?.overview}</p>
                     {
                         movie?.genres &&
                         <div className='tag justify-content-center'>
@@ -65,33 +87,48 @@ const MovieDetail = () => {
                             ))}
                         </div>
                     }
+
+                    <p className='movie-detail__desc'>{movie?.overview}</p>
+
+                    {
+                        movie?.homepage &&
+                        <a href={movie?.homepage} target='_blank' className='button d-inline-block mx-3'>Movie Site</a>
+                    }
+                    {
+                        movie?.imdb_id &&
+                        <a href={`https://www.imdb.com/title/${movie?.imdb_id}`} target='_blank' className='button d-inline-block mx-3'>IMDB</a>
+                    }
                 </div>
             </div>
             <div className="section">
                 <Container>
-                    <Tabs>
-                        {
-                            comments?.results.length > 0 &&
-                            <Tab eventKey="comments" title="Comments">
-                                <Comment />
-                            </Tab>
-                        }
+                    <Tabs className='tab'>
                         {
                             cast?.length > 0 &&
-                            <Tab eventKey="cast" title="Cast">
+                            <Tab className='tab__item' eventKey="cast" title="Cast">
                                 <Cast />
                             </Tab>
                         }
                         {
+                            comments?.results.length > 0 &&
+                            <Tab className='tab__item' eventKey="comments" title="Comments">
+                                <Comment />
+                            </Tab>
+                        }
+                        {
                             images?.length > 0 &&
-                            <Tab eventKey="images" title="Images">
+                            <Tab className='tab__item' eventKey="images" title="Images">
                                 <Images />
                             </Tab>
                         }
+                        {
+                            videos?.length > 0 &&
+                            <Tab className='tab__item' eventKey="videos" title="Videos">
+                                <Videos />
+                            </Tab>
+                        }
 
-                        <Tab eventKey="videos" title="Videos">
-                            4
-                        </Tab>
+
                     </Tabs>
                 </Container>
             </div>

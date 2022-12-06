@@ -13,6 +13,7 @@ export const movieReducer = createSlice({
         comments: null,
         cast: null, // oyuncu kadrosu
         images: null,
+        videos: null
     },
     reducers: {
         setMovieDetail: (state, action) => {
@@ -45,6 +46,9 @@ export const movieReducer = createSlice({
         setImages: (state, action) => {
             state.images = action.payload
         },
+        setVideos: (state, action) => {
+            state.videos = action.payload
+        },
     }
 })
 
@@ -58,7 +62,8 @@ export const {
     setMovieGenres,
     setComments,
     setCast,
-    setImages
+    setImages,
+    setVideos
 } = movieReducer.actions
 
 export default movieReducer.reducer

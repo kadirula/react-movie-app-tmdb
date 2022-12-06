@@ -9,14 +9,14 @@
             padding: 1rem 2rem;
             font-size: 1.4rem;
             font-weight: 600;
-            color: #fff;
+            color: themed('pagination-text');
             transition: all 0.5s;
             &:hover {
                 opacity: 0.6;
             }
             &.active {
                 background: themed('pagination-active');
-                color: themed('text');
+                color: darken(themed('pagination-text'), 100%);
             }
             &.prev {
                 border-top-left-radius: 3rem;
