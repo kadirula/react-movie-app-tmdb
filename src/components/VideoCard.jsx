@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { fetchFromAPI } from '../api/fetch';
-import { setError } from '../redux/reducers/siteReducer';
 
 const VideoCard = () => {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { movieModal } = useSelector(state => state.modal);
@@ -25,10 +22,6 @@ const VideoCard = () => {
                 else {
                     setMovieVideo(res.data.results[0]);
                 }
-            }
-            else{
-                dispatch(setError(res))
-                navigate('/error');
             }
         })
     }, [])
