@@ -5,8 +5,14 @@ import { fetchFromAPI } from '../api/fetch';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
 import Loading from '../components/Loading';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setError } from '../redux/reducers/siteReducer';
 
 const UpcomingMovies = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [upcomingMovies, setUpcomingMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,6 +34,10 @@ const UpcomingMovies = () => {
 
                 setUpcomingMovies(filterUpcomingMovies);
                 setTotalPage(res.data.total_pages)
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
     }, [currentPage])

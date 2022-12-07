@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { fetchFromAPI } from '../../api/fetch';
 import Container from 'react-bootstrap/Container';
 import Genres from '../Genres';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setUpcomingMovies } from '../../redux/reducers/movieReducer'
+import { setError } from '../../redux/reducers/siteReducer'
 import { useDispatch, useSelector } from 'react-redux';
 
 // Swiper
@@ -16,7 +17,7 @@ import 'swiper/css/autoplay';
 
 
 const Slider = () => {
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { upcomingMovies } = useSelector(state => state.movie);
 
@@ -34,6 +35,10 @@ const Slider = () => {
                     .sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
 
                     dispatch(setUpcomingMovies(filterMovies));
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
 

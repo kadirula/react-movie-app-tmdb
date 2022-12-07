@@ -5,10 +5,14 @@ import { fetchFromAPI } from '../api/fetch';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
 import Loading from '../components/Loading';
+import { setError } from '../redux/reducers/siteReducer';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const PopularMovies = () => {
 
-    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [popularMovies, setPopularMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,6 +32,10 @@ const PopularMovies = () => {
                     .sort((a, b) => b.popularity - a.popularity);
                 setPopularMovies(filterPopularMovie);
                 setTotalPage(res.data.total_pages)
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
     }, [currentPage])

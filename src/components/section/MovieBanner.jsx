@@ -4,9 +4,14 @@ import ReactPlayer from 'react-player'
 import { HiPlay } from "react-icons/hi";
 import PuffLoader from "react-spinners/PuffLoader";
 import MovieBannerInfo from '../MovieBannerInfo';
+import { setError } from '../../redux/reducers/siteReducer'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const MovieBanner = ({ type }) => {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [movie, setMovie] = useState(null);
     const [movieVideo, setMovieVideo] = useState(null);
@@ -40,7 +45,15 @@ const MovieBanner = ({ type }) => {
                             .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
                         setMovieVideo(movieVideoFiltered);
                     }
+                    else{
+                        dispatch(setError(res))
+                        navigate('/error');
+                    }
                 })
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
 
         })

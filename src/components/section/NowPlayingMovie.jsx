@@ -2,13 +2,16 @@ import React from 'react'
 import { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { fetchFromAPI } from '../../api/fetch'
 import { setNowPlayingMovies } from '../../redux/reducers/movieReducer'
+import { setError } from '../../redux/reducers/siteReducer'
 import Heading from '../Heading'
 import MovieSlider from '../sliders/MovieSlider'
 
 const NowPlayingMovie = () => {
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { nowPlayingMovies } = useSelector(state => state.movie);
@@ -24,6 +27,10 @@ const NowPlayingMovie = () => {
                     .sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
 
                 dispatch(setNowPlayingMovies(filterMovie));
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
 
         })

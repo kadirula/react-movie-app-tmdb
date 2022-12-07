@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import MovieCard from '../components/MovieCard';
 import PageBanner from '../components/PageBanner';
 import { fetchFromAPI } from '../api/fetch';
 import { setSearchMovie } from "../redux/reducers/searchReducer";
-import { setSearchStatus } from "../redux/reducers/siteReducer";
+import { setError, setSearchStatus } from "../redux/reducers/siteReducer";
 import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
 
@@ -15,6 +15,8 @@ import Pagination from '../components/Pagination';
 const Search = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
     const { value } = useParams();
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +38,10 @@ const Search = () => {
                 dispatch(setSearchMovie(res.data));
                 dispatch(setSearchStatus(false));
                 setTotalPage(res.data.total_pages);
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         });
     }, [value, currentPage])

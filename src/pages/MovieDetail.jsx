@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { fetchFromAPI } from '../api/fetch';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -11,10 +11,12 @@ import Cast from '../components/Cast';
 import Images from '../components/Images';
 import Videos from '../components/Videos';
 import Loading from '../components/Loading';
+import { setError } from '../redux/reducers/siteReducer';
 
 const MovieDetail = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const [movie, setMovie] = useState(null);
@@ -34,11 +36,19 @@ const MovieDetail = () => {
             if (res.status === 200) {
                 setMovie(res.data);
             }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
+            }
         })
 
         fetchFromAPI(`movie/${id}/reviews`).then(res => {
             if (res.status === 200) {
                 dispatch(setComments(res.data))
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
 
@@ -47,11 +57,19 @@ const MovieDetail = () => {
                 const filteredCast = res.data.cast.sort((a, b) => a.order - b.order);
                 dispatch(setCast(filteredCast))
             }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
+            }
         })
 
         fetchFromAPI(`movie/${id}/images`).then(res => {
             if (res.status === 200) {
                 dispatch(setImages(res.data.backdrops))
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
 
@@ -63,6 +81,10 @@ const MovieDetail = () => {
                         video.type === 'Trailer')
                     .sort((a, b) => new Date(b.published_at) - new Date(a.published_at)).slice(0, 2);
                 dispatch(setVideos(filteredVideo))
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
 

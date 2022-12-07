@@ -5,8 +5,14 @@ import { fetchFromAPI } from '../api/fetch';
 import MovieCard from '../components/MovieCard';
 import Pagination from '../components/Pagination';
 import Loading from '../components/Loading';
+import { setError } from '../redux/reducers/siteReducer';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const TopRatedMovies = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [topRatedMovies, setTopRatedMovies] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +32,10 @@ const TopRatedMovies = () => {
                     .filter(movie => movie.vote_average > 7);
                 setTopRatedMovies(filterTopRatedMovie);
                 setTotalPage(res.data.total_pages)
+            }
+            else{
+                dispatch(setError(res))
+                navigate('/error');
             }
         })
     }, [currentPage])
