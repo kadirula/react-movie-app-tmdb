@@ -1,6 +1,6 @@
 import axios from "axios";
 const baseUrl = 'https://api.themoviedb.org/3/';
-const apiKey = '676e896f3bb979d4566a1fea83360997';
+const apiKey = process.env.REACT_APP_API_KEY;
 
 export const fetchFromAPI = async (url, page = 1, query = '') => {
 
