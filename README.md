@@ -1,4 +1,4 @@
-# React - Restaurant Single Page
+# React - Restaurant Movie App
 
 Click to view live demo [TMDB Movie](https://react-restaurant-single-page.netlify.app/).
 
