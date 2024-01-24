@@ -1,6 +1,6 @@
-# React - Restaurant Movie App
+# React - Movie App
 
-Click to view live demo [TMDB Movie](https://react-restaurant-single-page.netlify.app/).
+Click to view live demo [TMDB Movie](https://react-tmdb-movie-app-v1.netlify.app/).
 
 ## Dependencies
 
